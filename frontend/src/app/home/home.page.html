@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" class="cheese-header">
+  <ion-toolbar>
+    <ion-title>Quesos Canarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="page-cheeses">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Quesos Canarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="hero" role="img" aria-label="Quesos canarios sobre tabla de madera"></div>
+
+  <section class="intro" aria-labelledby="intro-title">
+    <h2 id="intro-title">Descubre el sabor auténtico</h2>
+    <p>
+      Bienvenido a tu aplicación de quesos canarios. Explora variedades locales,
+      conoce su curación y apoya a los productores artesanos.
+    </p>
+  </section>
+</ion-content>
+
+<ion-footer class="app-footer">
+  <ion-toolbar>
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item active" (click)="gotoHome()" aria-current="page">
+        <ion-icon name="home"></ion-icon>
+        <span>Principal</span>
+      </button>
+      <button class="nav-item" (click)="gotoMyCheeses()">
+        <ion-icon name="list"></ion-icon>
+        <span>Mis Quesos</span>
+      </button>
+      <button class="nav-item" (click)="gotoAddCheeses()">
+        <ion-icon name="add-circle"></ion-icon>
+        <span>Añadir Queso</span>
+      </button>
+    </nav>
+  </ion-toolbar>
+</ion-footer>

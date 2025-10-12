@@ -1,0 +1,61 @@
+<ion-header [translucent]="true" class="cheese-header">
+  <ion-toolbar>
+    <ion-title>Mis Quesos Canarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="page-cheeses">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mis quesos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="cheese-list">
+    <ion-item *ngFor="let b of cheeses" class="cheese-item">
+      <ion-label>
+        <h1 *ngIf="editId !== b.id" class="cheese-name">{{ b.name }}</h1>
+        <p *ngIf="editId !== b.id" class="cheese-curation">{{ b.curation }}</p>
+
+        <div *ngIf="editId !== b.id" class="actions">
+          <ion-button fill="solid" size="small" (click)="startEdit(b)">Editar</ion-button>
+          <ion-button fill="outline" color="danger" size="small" (click)="deleteCheese(b.id)">
+            Borrar
+          </ion-button>
+        </div>
+
+        <div *ngIf="editId === b.id" class="edit-block">
+          <ion-input [(ngModel)]="editName" placeholder="Nombre"></ion-input>
+          <ion-input [(ngModel)]="editCuration" placeholder="Curación"></ion-input>
+
+          <div class="edit-actions">
+            <ion-button fill="solid" size="small" (click)="confirmEdit(b.id)">
+              Confirmar
+            </ion-button>
+            <ion-button fill="outline" size="small" (click)="cancelEdit()">
+              Cancelar
+            </ion-button>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="app-footer">
+  <ion-toolbar>
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item" (click)="gotoHome()">
+        <ion-icon name="home"></ion-icon>
+        <span>Principal</span>
+      </button>
+      <button class="nav-item active" (click)="gotoMyCheeses()" aria-current="page">
+        <ion-icon name="list"></ion-icon>
+        <span>Mis Quesos</span>
+      </button>
+      <button class="nav-item" (click)="gotoAddCheeses()">
+        <ion-icon name="add-circle"></ion-icon>
+        <span>Añadir Queso</span>
+      </button>
+    </nav>
+  </ion-toolbar>
+</ion-footer>
