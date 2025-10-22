@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-add-cheese',
@@ -15,27 +16,38 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 export class AddCheesePage implements OnInit {
   
   cheeseForm: FormGroup;
+  capturedPhoto: string = "";
+  isSubmitted: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder, 
     private cheeseService: CheeseService,
     private route: Router,
-    private router: Router
+    private router: Router,
+    private photoService: PhotoService,
   ) {
     this.cheeseForm = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
-      curation: ['', Validators.compose([Validators.required])]
+      curation: ['', Validators.compose([Validators.required])],
+      weight: ['', Validators.compose([Validators.required])],
+      origen: ['', Validators.compose([Validators.required])]
+
     });
   }
 
   ngOnInit() {
   }
 
-  createCheese() {
+  async createCheese() {
     if (this.cheeseForm.valid) {
       console.log('Formulario válido:', this.cheeseForm.value);
+      let blob = null;
+      if (this.capturedPhoto != "") {
+        const response = await fetch(this.capturedPhoto);
+        blob = await response.blob();
+      }
 
-      this.cheeseService.create(this.cheeseForm.value).subscribe(response => {
+      this.cheeseService.create(this.cheeseForm.value, blob).subscribe(response => {
         console.log('Queso creado:', response);
         this.route.navigateByUrl('/my-cheeses');
       });
@@ -57,4 +69,40 @@ export class AddCheesePage implements OnInit {
 gotoHome(){
     this.router.navigateByUrl("/home");
   }
+
+
+   takePhoto() {
+    this.photoService.takePhoto().then(data => {
+      this.capturedPhoto = data.webPath? data.webPath : "";
+    });
+  }
+
+  pickImage() {
+    this.photoService.pickImage().then(data => {
+      this.capturedPhoto = data.webPath;
+    });
+  }
+    discardImage() {
+    this.capturedPhoto = "";
+  }
+
+  async submitForm() {
+    this.isSubmitted = true;
+    if (!this.cheeseForm.valid) {
+      console.log('Please provide all the required values!')
+      return;
+    } else {
+      let blob = null;
+      if (this.capturedPhoto != "") {
+        const response = await fetch(this.capturedPhoto);
+        blob = await response.blob();
+      }
+
+      this.cheeseService.create(this.cheeseForm.value, blob).subscribe(data => {
+        console.log("Photo sent!");
+        this.router.navigateByUrl("/list-bicycles");
+      })
+    }
+  }
+
 }

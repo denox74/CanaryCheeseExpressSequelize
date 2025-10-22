@@ -5,7 +5,17 @@ module.exports = (sequelize, Sequelize) => {
         },
         curation:{
             type: Sequelize.STRING
-        }
+        },
+        weight:{
+            type: Sequelize.FLOAT
+        },
+        origen: {
+      type: Sequelize.STRING
+    },
+        filename: {
+      type: Sequelize.STRING
+    }
+
     });
     return Cheese;
 };

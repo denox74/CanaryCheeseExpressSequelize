@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'add-cheese',
     loadChildren: () => import('./add-cheese/add-cheese.module').then( m => m.AddCheesePageModule)
+  },  {
+    path: 'mod-cheese',
+    loadChildren: () => import('./mod-cheese/mod-cheese.module').then( m => m.ModCheesePageModule)
   },
+
 ];
 
 @NgModule({

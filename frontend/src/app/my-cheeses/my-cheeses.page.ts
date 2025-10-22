@@ -38,6 +38,11 @@ startEdit(cheese: any) {
   this.editName = cheese.name;
   this.editCuration = cheese.curation;
 }
+
+goToEdit(cheese: any) {
+  // navigate to the mod-cheese page with the cheese id, passing the cheese object in state
+  this.router.navigate(['/mod-cheese', cheese.id], { state: { cheese } });
+}
   confirmEdit(id: any) {
   const updatedCheese = {
     name: this.editName,

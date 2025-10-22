@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "sasa", //
+    PASSWORD: "KronoS.7474", //
     DB: "cheeses_db",
     dialect: "mysql",
     pool:{

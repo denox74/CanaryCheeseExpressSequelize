@@ -1,17 +1,17 @@
 <ion-header [translucent]="true" class="cheese-header">
   <ion-toolbar>
-    <ion-title>Añadir Quesos Canarios</ion-title>
+    <ion-title>Modificar Queso</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-cheeses">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Añadir quesos</ion-title>
+      <ion-title size="large">Modificar queso</ion-title>
     </ion-toolbar>
   </ion-header>
 
-    <ion-grid>
+  <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="6">
         <ion-img class="photo-frame" *ngIf="capturedPhoto" [src]="capturedPhoto" (click)="takePhoto()"></ion-img>
@@ -35,7 +35,7 @@
     </ion-row>
   </ion-grid>
 
-  <form class="cheese-form" [formGroup]="cheeseForm" (ngSubmit)="createCheese()">
+  <form class="cheese-form" [formGroup]="cheeseForm" (ngSubmit)="updateCheese()">
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
@@ -73,27 +73,9 @@
     </ion-note>
 
 
-
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="cheeseForm.invalid">
-      Crear
+      Guardar cambios
     </ion-button>
-      </form>
-      </ion-content>
-<ion-footer class="app-footer">
-  <ion-toolbar>
-    <nav class="bottom-nav" aria-label="Navegación principal">
-      <button class="nav-item" (click)="gotoHome()">
-        <ion-icon name="home"></ion-icon>
-        <span>Principal</span>
-      </button>
-      <button class="nav-item active" (click)="gotoMyCheeses()" aria-current="page">
-        <ion-icon name="list"></ion-icon>
-        <span>Mis Quesos</span>
-      </button>
-      <button class="nav-item" (click)="gotoAddCheeses()">
-        <ion-icon name="add-circle"></ion-icon>
-        <span>Añadir Queso</span>
-      </button>
-    </nav>
-  </ion-toolbar>
-</ion-footer>
+  </form>
+
+</ion-content>

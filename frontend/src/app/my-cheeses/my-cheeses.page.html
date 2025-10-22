@@ -13,30 +13,21 @@
 
   <ion-list class="cheese-list">
     <ion-item *ngFor="let b of cheeses" class="cheese-item">
+            <ion-avatar slot="start">
+        <img *ngIf="b.filename" src="http://localhost:8080/images/{{b.filename}}" alt="image"/>
+      </ion-avatar>
       <ion-label>
         <h1 *ngIf="editId !== b.id" class="cheese-name">{{ b.name }}</h1>
         <p *ngIf="editId !== b.id" class="cheese-curation">{{ b.curation }}</p>
 
         <div *ngIf="editId !== b.id" class="actions">
-          <ion-button fill="solid" size="small" (click)="startEdit(b)">Editar</ion-button>
+          <ion-button fill="solid" size="small" (click)="goToEdit(b)">Editar</ion-button>
           <ion-button fill="outline" color="danger" size="small" (click)="deleteCheese(b.id)">
             Borrar
           </ion-button>
         </div>
 
-        <div *ngIf="editId === b.id" class="edit-block">
-          <ion-input [(ngModel)]="editName" placeholder="Nombre"></ion-input>
-          <ion-input [(ngModel)]="editCuration" placeholder="Curación"></ion-input>
-
-          <div class="edit-actions">
-            <ion-button fill="solid" size="small" (click)="confirmEdit(b.id)">
-              Confirmar
-            </ion-button>
-            <ion-button fill="outline" size="small" (click)="cancelEdit()">
-              Cancelar
-            </ion-button>
-          </div>
-        </div>
+     
       </ion-label>
     </ion-item>
   </ion-list>
