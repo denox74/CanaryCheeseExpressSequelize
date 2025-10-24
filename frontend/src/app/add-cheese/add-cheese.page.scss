@@ -102,3 +102,53 @@
     &.active { color: #ec9513; }
   }
 }
+
+.cancel-btn {
+  --background: #ec1313;
+  --color: #fff;
+  --border-radius: 10px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  box-shadow: 0 3px 8px rgba(236,149,19,.32);
+  transition: transform .15s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(236,149,19,.38);
+  }
+  &:active {
+    transform: scale(.98);
+  }
+  &:disabled {
+    --background: #e6e6e6;
+    --color: #9aa0a6;
+    box-shadow: none;
+  }
+}
+
+.submit-btn {
+  --background: #ec9513;
+  --color: #fff;
+  --border-radius: 10px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  box-shadow: 0 3px 8px rgba(236,149,19,.32);
+  transition: transform .15s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(236,149,19,.38);
+  }
+  &:active {
+    transform: scale(.98);
+  }
+  &:disabled {
+    --background: #e6e6e6;
+    --color: #9aa0a6;
+    box-shadow: none;
+  }
+}

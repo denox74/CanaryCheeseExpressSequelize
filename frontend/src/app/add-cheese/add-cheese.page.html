@@ -19,15 +19,15 @@
           (click)="takePhoto()"></ion-img>
       </ion-col>
       <ion-col size="6">
-        <ion-button color="primary" fill="outline" (click)="takePhoto()">
+        <ion-button class="submit-btn" (click)="takePhoto()">
           <ion-icon slot="start" name="camera-outline"></ion-icon>
           Take a photo
         </ion-button>
-        <ion-button color="primary" fill="outline" (click)="pickImage()">
+        <ion-button class="submit-btn" (click)="pickImage()">
           <ion-icon slot="start" name="image-outline"></ion-icon>
           Pick an image
         </ion-button>
-        <ion-button color="danger" fill="outline" (click)="discardImage()">
+        <ion-button class="cancel-btn"(click)="discardImage()">
           <ion-icon slot="start" name="aperture"></ion-icon>
           Discard image
         </ion-button>

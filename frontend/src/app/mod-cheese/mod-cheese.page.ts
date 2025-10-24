@@ -119,12 +119,13 @@ export class ModCheesePage implements OnInit {
       console.log('updateCheese: sending payload=', payload, 'hasBlob=', !!blob);
       try {
         this.cheeseService.update(this.cheeseId, payload, blob).subscribe({
-          next: (res: any) => {
+          next: async (res: any) => {
             // if server returned updated object with filename, update preview
             if (res && res.filename) {
               this.capturedPhoto = `http://localhost:8080/images/${res.filename}`;
             }
-            this.router.navigateByUrl('/my-cheeses');
+            // navegar a la lista y forzar recarga simple
+            await this.refreshCurrentRoute('/my-cheeses');
           },
           error: (err) => {
             console.error('Update failed:', err);
@@ -134,6 +135,15 @@ export class ModCheesePage implements OnInit {
         console.error('Unexpected error calling update:', err);
       }
     }
+  }
+
+  /**
+   * Refresca la ruta indicada (o la actual si no se pasa) usando una navegación "neutra".
+   */
+  async refreshCurrentRoute(targetUrl?: string): Promise<boolean> {
+    const current = targetUrl ? targetUrl : this.router.url;
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(current);
   }
 
   takePhoto() {

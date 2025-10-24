@@ -22,7 +22,6 @@ export class AddCheesePage implements OnInit {
   constructor(
     public formBuilder: FormBuilder, 
     private cheeseService: CheeseService,
-    private route: Router,
     private router: Router,
     private photoService: PhotoService,
   ) {
@@ -49,7 +48,11 @@ export class AddCheesePage implements OnInit {
 
       this.cheeseService.create(this.cheeseForm.value, blob).subscribe(response => {
         console.log('Queso creado:', response);
-        this.route.navigateByUrl('/my-cheeses');
+        // limpiar formulario y preview
+        this.cheeseForm.reset();
+        this.capturedPhoto = "";
+        // navegar a la lista y forzar recarga simple
+        this.refreshCurrentRoute('/my-cheeses');
       });
     } else {
       console.log('Formulario no válido');
@@ -100,9 +103,23 @@ gotoHome(){
 
       this.cheeseService.create(this.cheeseForm.value, blob).subscribe(data => {
         console.log("Photo sent!");
-        this.router.navigateByUrl("/list-bicycles");
+        // limpiar y volver a la lista de quesos (y forzar recarga)
+        this.cheeseForm.reset();
+        this.capturedPhoto = "";
+        this.refreshCurrentRoute('/my-cheeses');
       })
     }
+  }
+
+  /**
+   * Refresca la ruta indicada (o la actual si no se pasa) usando una navegación "neutra".
+   * Esto fuerza que el componente asociado se vuelva a cargar.
+   */
+  async refreshCurrentRoute(targetUrl?: string): Promise<boolean> {
+    const current = targetUrl ? targetUrl : this.router.url;
+    // navegar a una ruta neutra sin cambiar la URL visible y volver a la ruta deseada
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(current);
   }
 
 }

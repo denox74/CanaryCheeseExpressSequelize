@@ -21,8 +21,8 @@
         <p *ngIf="editId !== b.id" class="cheese-curation">{{ b.curation }}</p>
 
         <div *ngIf="editId !== b.id" class="actions">
-          <ion-button fill="solid" size="small" (click)="goToEdit(b)">Editar</ion-button>
-          <ion-button fill="outline" color="danger" size="small" (click)="deleteCheese(b.id)">
+          <ion-button class="submit-btn" size="small" (click)="goToEdit(b)">Editar</ion-button>
+          <ion-button class="cancel-btn" size="small" (click)="deleteCheese(b.id)">
             Borrar
           </ion-button>
         </div>
