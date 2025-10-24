@@ -47,10 +47,8 @@ exports.findOne = (req, res) => {
   });
 };
 
-// Update a Cheese byh the id in the request
   exports.update = (req, res) => {
   const idQueso = req.params.id;
-  // Build update payload: pick fields from body and file
   const updateData = {};
   if (req.body.name !== undefined) updateData.name = req.body.name;
   if (req.body.curation !== undefined) updateData.curation = req.body.curation;
@@ -64,7 +62,6 @@ exports.findOne = (req, res) => {
   Cheese.update(updateData, { where: { id: idQueso } })
     .then(result => {
       if (result[0] == 1) {
-        // Return the updated object so client can immediately show changes (including filename)
         Cheese.findByPk(idQueso).then(updated => {
           if (updated) {
             console.log('Update succeeded, returning updated record id=', idQueso);
@@ -86,7 +83,6 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Delete a Cheese with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
   Cheese.destroy({ where: { id: id } })
