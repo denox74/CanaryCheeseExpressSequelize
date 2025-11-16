@@ -1,48 +1,61 @@
+<!-- Cabecera superior con título de la página -->
 <ion-header [translucent]="true" class="cheese-header">
   <ion-toolbar>
     <ion-title>Mis Quesos Canarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Contenido principal de la página -->
 <ion-content [fullscreen]="true" class="page-cheeses">
+  <!-- Cabecera condensada para el scroll en iOS -->
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Mis quesos</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <!-- Lista de quesos del usuario -->
   <ion-list class="cheese-list">
     <ion-item *ngFor="let b of cheeses" class="cheese-item">
-            <ion-avatar slot="start">
-        <img *ngIf="b.filename" src="http://localhost:8080/images/{{b.filename}}" alt="image"/>
+      <!-- Avatar con la foto del queso, si tiene -->
+      <ion-avatar slot="start">
+        <img *ngIf="b.filename" src="http://localhost:8080/images/{{b.filename}}" alt="Imagen del queso" />
       </ion-avatar>
+
+      <!-- Información del queso: nombre, curación y acciones -->
       <ion-label>
         <h1 *ngIf="editId !== b.id" class="cheese-name">{{ b.name }}</h1>
         <p *ngIf="editId !== b.id" class="cheese-curation">{{ b.curation }}</p>
 
+        <!-- Botones de acción para editar o eliminar -->
         <div *ngIf="editId !== b.id" class="actions">
-          <ion-button class="submit-btn" size="small" (click)="goToEdit(b)">Editar</ion-button>
+          <ion-button class="submit-btn" size="small" (click)="goToEdit(b)">
+            Editar
+          </ion-button>
           <ion-button class="cancel-btn" size="small" (click)="deleteCheese(b.id)">
             Borrar
           </ion-button>
         </div>
-
-     
       </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
+
+<!-- Footer con barra de navegación principal -->
 <ion-footer class="app-footer">
   <ion-toolbar>
     <nav class="bottom-nav" aria-label="Navegación principal">
+      <!-- icono es el icon name...-->
       <button class="nav-item" (click)="gotoHome()">
         <ion-icon name="home"></ion-icon>
         <span>Principal</span>
       </button>
+
       <button class="nav-item active" (click)="gotoMyCheeses()" aria-current="page">
         <ion-icon name="list"></ion-icon>
         <span>Mis Quesos</span>
       </button>
+
       <button class="nav-item" (click)="gotoAddCheeses()">
         <ion-icon name="add-circle"></ion-icon>
         <span>Añadir Queso</span>

@@ -1,126 +1,19 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* Fondo general de la página de quesos */
+:host {
+  --ion-background-color: #f3d19f;
+  --ion-text-color: #3b2e1b;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Fondo del contenido */
+ion-content {
+  --background: #ffffff !important;
+  background: #ffffff !important;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-.cheese {
-  color: chocolate;
-}
-
-.icon-gold {
-            color: #ec9513;
-        }
-
-body {
-  min-height: max(884px, 100dvh);
-}
-
-#container a {
-  text-decoration: none;
-}
-.page-cheeses {
-  --background: var(--ion-background-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.hero {
-  height: 20rem; 
-  border-radius: 0.75rem; 
-  margin: 0 1rem; 
-  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOm6NRo-yZK-tZKNYn6588ttbV6HEHl7L9kh0WHLGB52cAS3XolQDIbqqCH0Qt9577ILPKN9k7bzccq-_93mPvD1a3qJlfwiqaOeuqwNqYWXTe7RwoZBnekmpjwPZ2Bm5OmygeZcgBy7vfrakAz97_lWCLBpQE4QXsXeTVhZFsEPkxzitLeoIrlbX1G6IjG20ErvXnEvlVgCKcTxVgpHeReR95R7cL-_LSpkE3SdeHFt_ir-5eGdza3xhxSaFInVrSYqFv6wwkVuM");
-  background-size: cover;
-  background-position: center;
-}
-
-.intro {
-  padding: 1rem; 
-  max-width: 840px;
-  margin: 0.75rem auto 0; 
-
-  h2 {
-    font-size: 1.5rem; 
-    font-weight: 700;
-    color: var(--ion-text-color, #1c1c1c);
-    margin: 0 0 0.5rem 0;
-  }
-
-  p {
-    color: var(--ion-color-step-600, #57534e); 
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .dark & {
-    h2 { color: #fff; }
-    p  { color: var(--ion-color-step-300, #cbd5e1); }
-  }
-}
-
-.app-footer {
-  border-top: 1px solid var(--ion-color-step-200, #e5e7eb);
-
-  .bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.35rem 0;
-  }
-
-  .nav-item {
-    appearance: none;
-    background: transparent;
-    border: 0;
-    color: var(--ion-color-medium, #6b7280);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.75rem; 
-    font-weight: 600;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .nav-item ion-icon {
-    font-size: 24px;
-  }
-
-  .nav-item.active {
-    color: #ec9513; 
-  }
-
-  .dark & {
-    border-top: 1px solid var(--ion-color-step-250, #2a2a2a);
-  }
-}
-
-/* Responsivo suave */
-@media (min-width: 640px) {
-  .hero     { height: 22rem; }
-  .intro h2 { font-size: 1.75rem; }
-}
+/* Cabecera genérica con colores de la app */
 .cheese-header ion-toolbar {
-  --background: #f3d19f; 
-  --color: #3b2e1b; 
+  --background: #f3d19f;
+  --color: #3b2e1b;
   text-align: center;
   justify-content: center;
 }
@@ -139,4 +32,71 @@ body {
 :host-context(.dark) .cheese-header ion-toolbar {
   --background: #8c5d19;
   --color: #fff8ec;
+}
+
+/* Layout principal del contenido de la página */
+.page-cheeses {
+  --background: var(--ion-background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen hero superior con los quesos */
+.hero {
+  height: 20rem;
+  border-radius: 0.75rem;
+  margin: 0 1rem;
+  background-image: url('/assets/quesos.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Sección introductoria de texto */
+.intro {
+  padding: 1rem;
+  max-width: 840px;
+  margin: 0.75rem auto 0;
+}
+
+.intro h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ion-text-color, #1c1c1c);
+  margin: 0 0 0.5rem 0;
+}
+
+.intro p {
+  color: var(--ion-color-step-600, #57534e);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Botón "Empezar" dentro de la intro */
+.intro .submit-btn {
+  --background: #ec9513;      /* naranja queso */
+  --color: #ffffff;
+  --border-radius: 999px;     /* pastilla redonda */
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  display: block;             /* para poder centrar con margin */
+  margin: 1rem auto 0;        /* centrado horizontal */
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+}
+
+/* Footer simple con línea superior */
+.app-footer {
+  border-top: 1px solid var(--ion-color-step-200, #e5e7eb);
+}
+
+/* Responsivo suave para pantallas más grandes */
+@media (min-width: 640px) {
+  .hero {
+    height: 22rem;
+  }
+
+  .intro h2 {
+    font-size: 1.75rem;
+  }
 }

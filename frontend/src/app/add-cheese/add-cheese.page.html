@@ -1,3 +1,4 @@
+<!-- Cabecera de la página -->
 <ion-header [translucent]="true" class="cheese-header">
   <ion-toolbar>
     <ion-title>Añadir Quesos Canarios</ion-title>
@@ -5,37 +6,58 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-cheeses">
+  <!-- Cabecera condensada al hacer scroll -->
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Añadir quesos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-    <ion-grid>
+  <!-- Bloque superior: foto + botones de imagen -->
+  <ion-grid>
     <ion-row class="ion-align-items-center">
+      <!-- Columna izquierda: foto del queso -->
       <ion-col size="6">
-        <ion-img class="photo-frame" *ngIf="capturedPhoto" [src]="capturedPhoto" (click)="takePhoto()"></ion-img>
-        <ion-img class="photo-frame" *ngIf="!capturedPhoto" src="../../assets/No-Image-Placeholder.svg"
-          (click)="takePhoto()"></ion-img>
+        <ion-img
+          class="photo-frame"
+          *ngIf="capturedPhoto"
+          [src]="capturedPhoto"
+          (click)="takePhoto()">
+        </ion-img>
+
+        <ion-img
+          class="photo-frame"
+          *ngIf="!capturedPhoto"
+          src="../../assets/No-Image-Placeholder.svg"
+          (click)="takePhoto()">
+        </ion-img>
       </ion-col>
+
+      <!-- Columna derecha: acciones de la foto -->
       <ion-col size="6">
-        <ion-button class="submit-btn" (click)="takePhoto()">
-          <ion-icon slot="start" name="camera-outline"></ion-icon>
-          Take a photo
-        </ion-button>
-        <ion-button class="submit-btn" (click)="pickImage()">
-          <ion-icon slot="start" name="image-outline"></ion-icon>
-          Pick an image
-        </ion-button>
-        <ion-button class="cancel-btn"(click)="discardImage()">
-          <ion-icon slot="start" name="aperture"></ion-icon>
-          Discard image
-        </ion-button>
+        <div class="photo-actions">
+          <ion-button class="submit-btn" (click)="takePhoto()">
+            <ion-icon slot="start" name="camera-outline"></ion-icon>
+            Hacer foto
+          </ion-button>
+
+          <ion-button class="submit-btn" (click)="pickImage()">
+            <ion-icon slot="start" name="image-outline"></ion-icon>
+            Elegir imagen
+          </ion-button>
+
+          <ion-button class="cancel-btn" (click)="discardImage()">
+            <ion-icon slot="start" name="aperture"></ion-icon>
+            Quitar imagen
+          </ion-button>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  <!-- Formulario de creación de queso -->
   <form class="cheese-form" [formGroup]="cheeseForm" (ngSubmit)="createCheese()">
+    <!-- Nombre -->
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
@@ -45,16 +67,18 @@
       El nombre es obligatorio.
     </ion-note>
 
+    <!-- Curación -->
     <ion-item>
       <ion-label position="floating">Curación</ion-label>
       <ion-input formControlName="curation" type="text"></ion-input>
     </ion-item>
     <ion-note color="danger"
       *ngIf="getFormControl('curation')?.hasError('required') && getFormControl('curation')?.touched">
-      La curación es obligatorio.
+      La curación es obligatoria.
     </ion-note>
 
-       <ion-item>
+    <!-- Peso -->
+    <ion-item>
       <ion-label position="floating">Peso</ion-label>
       <ion-input formControlName="weight" type="number" step="0.1" inputmode="decimal"></ion-input>
     </ion-item>
@@ -63,7 +87,8 @@
       El peso es obligatorio.
     </ion-note>
 
-           <ion-item>
+    <!-- Origen -->
+    <ion-item>
       <ion-label position="floating">Origen</ion-label>
       <ion-input formControlName="origen" type="text"></ion-input>
     </ion-item>
@@ -72,13 +97,14 @@
       El origen es obligatorio.
     </ion-note>
 
-
-
+    <!-- Botón principal de creación -->
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="cheeseForm.invalid">
       Crear
     </ion-button>
-      </form>
-      </ion-content>
+  </form>
+</ion-content>
+
+<!-- Footer de navegación inferior -->
 <ion-footer class="app-footer">
   <ion-toolbar>
     <nav class="bottom-nav" aria-label="Navegación principal">
@@ -86,11 +112,11 @@
         <ion-icon name="home"></ion-icon>
         <span>Principal</span>
       </button>
-      <button class="nav-item active" (click)="gotoMyCheeses()" aria-current="page">
+      <button class="nav-item" (click)="gotoMyCheeses()">
         <ion-icon name="list"></ion-icon>
         <span>Mis Quesos</span>
       </button>
-      <button class="nav-item" (click)="gotoAddCheeses()">
+      <button class="nav-item active" (click)="gotoAddCheeses()" aria-current="page">
         <ion-icon name="add-circle"></ion-icon>
         <span>Añadir Queso</span>
       </button>

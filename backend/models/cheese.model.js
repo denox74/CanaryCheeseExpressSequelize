@@ -14,8 +14,19 @@ module.exports = (sequelize, Sequelize) => {
     },
         filename: {
       type: Sequelize.STRING
+    },
+    // Relación con el usuario (clave foránea)
+    userId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,              
+      references: {
+        model: 'users',              
+        key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
     }
+  });
 
-    });
     return Cheese;
 };

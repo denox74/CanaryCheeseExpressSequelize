@@ -1,35 +1,51 @@
+/* Cabecera superior con colores de la app */
 .cheese-header ion-toolbar {
-  --background: #f3d19f; 
+  --background: #f3d19f;
   --color: #3b2e1b;
   text-align: center;
   justify-content: center;
 }
+
 .cheese-header ion-title {
   text-align: center;
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.3px;
 }
+
 .cheese-header {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+/* Variante por si el dispositivo fuerza modo oscuro */
 :host-context(.dark) .cheese-header ion-toolbar {
   --background: #8c5d19;
   --color: #fff8ec;
 }
 
+/* Contenido principal con fondo de la app */
 .page-cheeses {
   --background: var(--ion-background-color);
   display: flex;
   flex-direction: column;
 }
 
+/* Lista de quesos con fondo suave */
 .cheese-list {
   margin: 8px 12px 16px;
   border-radius: 12px;
-  overflow: hidden; 
+  overflow: hidden;
+  background: #fffbe6;
+  --background: transparent;
 }
 
+/* Aseguramos mismo fondo en ion-list */
+ion-list,
+.cheese-list {
+  background: #fffbe6;
+}
+
+/* Estilo de cada item de queso */
 .cheese-item {
   --padding-start: 16px;
   --inner-padding-end: 16px;
@@ -47,6 +63,14 @@
   }
 }
 
+/* Fondo del ion-item */
+ion-item.cheese-item {
+  --background: #fffbe6;
+  --ion-item-background: #fffbe6;
+  background: #fffbe6;
+}
+
+/* Nombre del queso */
 .cheese-name {
   margin: 0 0 4px 0;
   font-size: 1.05rem;
@@ -54,35 +78,81 @@
   color: var(--ion-text-color, #1f2937);
 }
 
+/* Texto con la curación */
 .cheese-curation {
   margin: 0 0 8px 0;
   color: var(--ion-color-step-600, #57606a);
 }
 
+/* Zona de botones Editar / Borrar */
 .actions {
   display: flex;
-  gap: 8px;
-}
-
-.edit-block {
-  display: grid;
   gap: 10px;
-  margin-top: 4px;
+  margin-top: 6px;
 
-  ion-input {
-    --padding-start: 12px;
-    --padding-end: 12px;
-    --background: var(--ion-color-step-50, #fafafa);
-    --border-radius: 10px;
-    border: 1px solid var(--ion-color-step-200, #e5e7eb);
+  ion-button {
+    --border-radius: 8px;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
-  .edit-actions {
-    display: flex;
-    gap: 8px;
+  /* Botón Editar (primer botón) */
+  ion-button:first-child {
+    --background: #ec9513;
+    --color: #fff;
+    box-shadow: 0 2px 5px rgba(236, 149, 19, 0.25);
+    border: none;
+
+    &:hover {
+      background: #f0a739;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(236, 149, 19, 0.35);
+    }
+
+    &:focus {
+      outline: none !important;
+      box-shadow: 0 0 0 3px rgba(236, 149, 19, 0.3);
+    }
+  }
+
+  /* Botón Borrar */
+  .cancel-btn {
+    --background: #ec1313;
+    --color: #fff;
+    --border-radius: 10px;
+    --padding-start: 18px;
+    --padding-end: 18px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    box-shadow: 0 3px 8px rgba(236, 149, 19, 0.32);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(236, 149, 19, 0.38);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      --background: #e6e6e6;
+      --color: #9aa0a6;
+      box-shadow: none;
+    }
   }
 }
 
+/* Footer con navegación inferior */
 .app-footer {
   border-top: 1px solid var(--ion-color-step-200, #e5e7eb);
 
@@ -114,143 +184,23 @@
       color: #ec9513;
     }
   }
-
-  .dark & {
-    border-top: 1px solid var(--ion-color-step-250, #2a2a2a);
-  }
 }
 
+/* Ajuste tipográfico en pantallas algo más grandes */
 @media (min-width: 640px) {
-  .cheese-name { font-size: 1.125rem; }
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 6px;
-
-  ion-button {
-    --border-radius: 8px;
-    --padding-start: 14px;
-    --padding-end: 14px;
-    --padding-top: 6px;
-    --padding-bottom: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    outline: none !important;
-    box-shadow: none !important;
-    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
-  }
-
-  /* Editar */
-  ion-button:first-child {
-    --background: #ec9513;
-    --color: #fff;
-    box-shadow: 0 2px 5px rgba(236, 149, 19, 0.25);
-    border: none;
-
-    &:hover {
-      background: #f0a739;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(236, 149, 19, 0.35);
-    }
-
-    &:focus {
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(236, 149, 19, 0.3);
-    }
-  }
-
-
-  .cancel-btn {
-  --background: #ec1313;
-  --color: #fff;
-  --border-radius: 10px;
-  --padding-start: 18px;
-  --padding-end: 18px;
-  font-weight: 800;
-  letter-spacing: .4px;
-  box-shadow: 0 3px 8px rgba(236,149,19,.32);
-  transition: transform .15s ease, box-shadow .2s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(236,149,19,.38);
-  }
-  &:active {
-    transform: scale(.98);
-  }
-  &:disabled {
-    --background: #e6e6e6;
-    --color: #9aa0a6;
-    box-shadow: none;
+  .cheese-name {
+    font-size: 1.125rem;
   }
 }
 
-  ion-button[color="danger"] {
-    --color: #d32f2f;
-    --background: transparent;
-    border: 1.5px solid #d32f2f;
-    box-shadow: none;
-    outline: none !important;
-
-    &:hover {
-      background: rgba(211, 47, 47, 0.08);
-      transform: translateY(-1px);
-    }
-
-    &:focus {
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.25);
-    }
-  }
+/* Forzar colores base de la página y quitar modo oscuro */
+:host {
+  --ion-background-color: #f3d19f;
+  --ion-text-color: #3b2e1b;
 }
 
-.edit-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-
-  ion-button {
-    --border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    outline: none !important;
-    box-shadow: none !important;
-    transition: all 0.2s ease;
-  }
-
-  ion-button:first-child {
-    --background: #ec9513;
-    --color: #fff;
-    border: none;
-    box-shadow: 0 2px 5px rgba(236, 149, 19, 0.25);
-
-    &:hover {
-      background: #f0a739;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(236, 149, 19, 0.35);
-    }
-
-    &:focus {
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(236, 149, 19, 0.25);
-    }
-  }
-
-  ion-button:last-child {
-    --background: #f4f4f4;
-    --color: #333;
-    border: 1px solid #ccc;
-    box-shadow: none;
-
-    &:hover {
-      background: #ebebeb;
-    }
-
-    &:focus {
-      outline: none !important;
-    }
-  }
+/* Fondo blanco para el contenido */
+ion-content {
+  --background: #ffffff !important;
+  background: #ffffff !important;
 }

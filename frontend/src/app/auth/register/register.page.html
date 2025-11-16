@@ -1,0 +1,101 @@
+<!-- Cabecera del registro con los colores base de la app -->
+<ion-header [translucent]="true" class="cheese-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido principal de la pantalla de registro -->
+<ion-content [fullscreen]="true" class="ion-padding auth-content">
+  <!-- Cabecera compacta al hacer scroll -->
+  <ion-header collapse="condense" class="cheese-header">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title size="large">Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Grid para centrar vertical y horizontalmente el formulario -->
+  <ion-grid class="auth-grid ion-justify-content-center ion-align-items-center">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-md="6" size-lg="4">
+        <!-- Tarjeta contenedora del formulario de registro -->
+        <ion-card class="auth-card">
+          <!-- Texto superior del registro -->
+          <div class="ion-text-center auth-header">
+            <h3 class="auth-title">Crea tu cuenta</h3>
+            <p class="auth-subtitle">
+              Regístrate para gestionar tus quesos canarios.
+            </p>
+          </div>
+
+          <!-- Formulario de registro -->
+          <form #form="ngForm" (ngSubmit)="register(form)">
+            <div class="ion-text-center">
+              <!-- Campo nombre (opcional) -->
+              <ion-item class="auth-item">
+                <ion-input
+                  name="name"
+                  type="text"
+                  placeholder="Tu nombre"
+                  ngModel
+                  class="auth-input"
+                ></ion-input>
+              </ion-item>
+
+              <!-- Campo email -->
+              <ion-item class="auth-item">
+                <ion-input
+                  name="email"
+                  type="email"
+                  placeholder="tu@email.com"
+                  ngModel
+                  required
+                  class="auth-input"
+                ></ion-input>
+              </ion-item>
+
+              <!-- Campo contraseña -->
+              <ion-item class="auth-item">
+                <ion-input
+                  name="password"
+                  type="password"
+                  placeholder="Contraseña"
+                  ngModel
+                  required
+                  class="auth-input"
+                ></ion-input>
+              </ion-item>
+            </div>
+
+            <!-- Botón principal de registro -->
+            <div class="ion-text-center">
+              <ion-button
+                size="large"
+                type="submit"
+                [disabled]="form.invalid"
+                expand="block"
+                class="auth-button"
+              >
+                Register
+              </ion-button>
+            </div>
+          </form>
+
+          <!-- Enlace a login -->
+          <div class="ion-text-center auth-footer">
+            ¿Ya tienes cuenta?
+            <a [routerLink]="['/login']" class="auth-link">
+              Inicia sesión
+            </a>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

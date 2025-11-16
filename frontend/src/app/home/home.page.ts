@@ -23,4 +23,8 @@ gotoHome(){
     this.router.navigateByUrl("/home");
   }
 
+  gotoLogin(){
+    this.router.navigateByUrl("/login");
+  }
+
 }

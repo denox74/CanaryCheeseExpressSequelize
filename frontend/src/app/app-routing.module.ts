@@ -18,10 +18,25 @@ const routes: Routes = [
   {
     path: 'add-cheese',
     loadChildren: () => import('./add-cheese/add-cheese.module').then( m => m.AddCheesePageModule)
-  },  {
+  },
+  {
     path: 'mod-cheese',
     loadChildren: () => import('./mod-cheese/mod-cheese.module').then( m => m.ModCheesePageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'user-home',
+    loadChildren: () => import('./user-home/user-home.module').then( m => m.UserHomePageModule)
+  },
+
+
+ 
 
 ];
 

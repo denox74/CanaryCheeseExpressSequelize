@@ -10,9 +10,11 @@ Estas instrucciones te permitirán obtener una copia del proyecto y ejecutarlo e
 Asegúrate de tener instalado:
 Node.js
  (v18 o superior)
+ https://nodejs.org/es/download
 npm
  o yarn
 MySQL
+https://dev.mysql.com/downloads/installer/
 Ionic CLI
 
 npm install -g @ionic/cli
@@ -38,6 +40,18 @@ Backend: Node.js, Express, Sequelize
 Base de datos: MySQL
 Control de versiones: Git + GitHub
 
+
+## Comandos
+-- Crear una página nueva:
+ionic g page "Nombre de la página"
+-- Iniciar modelos en index.js del backend
+node index.js
+-- El autentificador para los usuarios
+node server.js
+-- Iniciar IONIC
+ionic serve
+
+
 Autores
 
 ### David Liaño Macías
@@ -46,6 +60,8 @@ IES El Rincón – Curso 2024-25
 ### Licencia
 Este proyecto se distribuye bajo licencia Creative Commons CC0 1.0 Universal. 
 “Renuncio a todos los derechos de autor. Cualquiera puede usar, modificar o distribuir este proyecto sin ninguna restricción.”
+
+## Instalación de b
 
 
 ### POSTMAN

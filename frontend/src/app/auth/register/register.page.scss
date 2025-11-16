@@ -1,0 +1,210 @@
+.cheese {
+  color: chocolate;
+}
+
+.icon-gold {
+  color: #ec9513;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.page-cheeses {
+  --background: var(--ion-background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bloque de texto de introducción (home, por si se reutiliza este css) */
+.intro {
+  padding: 1rem;
+  max-width: 840px;
+  margin: 0.75rem auto 0;
+}
+
+.intro h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ion-text-color, #1c1c1c);
+  margin: 0 0 0.5rem 0;
+}
+
+.intro p {
+  color: var(--ion-color-step-600, #57534e);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.dark .intro h2 {
+  color: #fff;
+}
+
+.dark .intro p {
+  color: var(--ion-color-step-300, #cbd5e1);
+}
+
+/* Footer inferior de la app */
+.app-footer {
+  border-top: 1px solid var(--ion-color-step-200, #e5e7eb);
+}
+
+.app-footer .bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.35rem 0;
+}
+
+.app-footer .nav-item {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--ion-color-medium, #6b7280);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+}
+
+.app-footer .nav-item ion-icon {
+  font-size: 24px;
+}
+
+.app-footer .nav-item.active {
+  color: #ec9513;
+}
+
+.dark .app-footer {
+  border-top: 1px solid var(--ion-color-step-250, #2a2a2a);
+}
+
+/* Responsivo suave */
+@media (min-width: 640px) {
+  .hero {
+    height: 22rem;
+  }
+  .intro h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Quitar modos oscuros y forzar paleta base */
+:host {
+  --ion-background-color: #f3d19f;
+  --ion-text-color: #3b2e1b;
+}
+
+ion-content {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Cabecera genérica de páginas (login / register / etc.) */
+.cheese-header ion-toolbar {
+  --background: #f3d19f;
+  --color: #3b2e1b;
+  text-align: center;
+  justify-content: center;
+}
+
+.cheese-header ion-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.3px;
+}
+
+.cheese-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+:host-context(.dark) .cheese-header ion-toolbar {
+  --background: #8c5d19;
+  --color: #fff8ec;
+}
+
+/* ===================== */
+/*   ESTILO AUTH COMÚN   */
+/*   (login / register)  */
+/* ===================== */
+
+/* Fondo específico para pantallas de autenticación */
+ion-content.auth-content {
+  --background: #f9f0dd;
+  background: #f9f0dd;
+}
+
+/* Centrado vertical del grid de auth */
+.auth-grid {
+  min-height: 100%;
+}
+
+/* Tarjeta principal del formulario de auth */
+.auth-card {
+  border-radius: 18px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+}
+
+/* Cabecera de texto de auth (título + subtítulo) */
+.auth-header {
+  margin-bottom: 1rem;
+}
+
+.auth-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #3b2e1b;
+}
+
+.auth-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #57534e;
+}
+
+/* Campos del formulario de auth */
+.auth-item {
+  --background: #fff7e6;
+  --border-radius: 12px;
+  --padding-start: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.auth-input {
+  --padding-start: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Botón principal de acción (login / register) */
+.auth-button {
+  --background: #ec9513;
+  --color: #ffffff;
+  --border-radius: 999px;
+  margin-top: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* Texto inferior y enlace a login/register */
+.auth-footer {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #57534e;
+}
+
+.auth-link {
+  color: #ec9513;
+  font-weight: 600;
+  text-decoration: none;
+}

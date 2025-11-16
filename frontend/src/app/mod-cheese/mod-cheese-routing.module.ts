@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ModCheesePage } from './mod-cheese.page';
+import { ModCheesePage} from './mod-cheese.page';
 
 const routes: Routes = [
   {
