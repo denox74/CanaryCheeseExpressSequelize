@@ -130,7 +130,19 @@ ion-content {
   background: #ffffff !important;
 }
 
+/* Botón "Empezar" dentro de la intro */
+.intro .submit-btn {
+  --background: #ec9513;      /* naranja queso */
+  --color: #ffffff;
+  --border-radius: 999px;     /* pastilla redonda */
+  font-weight: 700;
+  letter-spacing: 0.4px;
 
+  display: block;             /* para poder centrar con margin */
+  margin: 1rem auto 0;        /* centrado horizontal */
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+}
 
 .cheese-header ion-toolbar {
   --background: #f3d19f; 
