@@ -1,0 +1,186 @@
+/* ===== Cabecera estilo “queso” ===== */
+.cheese-header ion-toolbar {
+  --background: #f3d19f;
+  --color: #3b2e1b;
+  text-align: center;
+  justify-content: center;
+}
+
+.cheese-header ion-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.3px;
+}
+
+.cheese-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Formulario de datos del queso ===== */
+.cheese-form {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.cheese-form ion-item {
+  --background: var(--ion-color-step-50, #fafafa);
+  --border-radius: 12px;
+  --highlight-color-focused: #ec9513;
+  border: 1px solid var(--ion-color-step-200, #e5e7eb);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.cheese-form ion-item ion-label {
+  font-weight: 700;
+  color: var(--ion-text-color, #1f2937);
+}
+
+.cheese-form ion-input {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --placeholder-color: var(--ion-color-medium, #6b7280);
+}
+
+/* Efecto al enfocar el campo */
+.cheese-form ion-item.item-has-focus {
+  border-color: #ec9513;
+  box-shadow: 0 4px 10px rgba(236, 149, 19, 0.15);
+}
+
+/* Mensajes de error de validación */
+.cheese-form ion-note[color='danger'] {
+  margin-top: -6px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+/* ===== Botones principales (naranjas) ===== */
+.submit-btn {
+  --background: #ec9513;
+  --color: #fff;
+  --border-radius: 10px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  box-shadow: 0 3px 8px rgba(236, 149, 19, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(236, 149, 19, 0.38);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    --background: #e6e6e6;
+    --color: #9aa0a6;
+    box-shadow: none;
+  }
+}
+
+/* Botón rojo para quitar la imagen */
+.cancel-btn {
+  --background: #ec1313;
+  --color: #fff;
+  --border-radius: 10px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  box-shadow: 0 3px 8px rgba(236, 149, 19, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(236, 149, 19, 0.38);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    --background: #e6e6e6;
+    --color: #9aa0a6;
+    box-shadow: none;
+  }
+}
+
+/* Contenedor vertical de los botones de foto */
+.photo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Ajustes de modo oscuro para los campos */
+:host-context(.dark) .cheese-form ion-item {
+  --background: var(--ion-color-step-100, #222);
+  border-color: var(--ion-color-step-250, #2b2b2b);
+  box-shadow: none;
+}
+
+:host-context(.dark) .cheese-form ion-item.item-has-focus {
+  border-color: #f1ad52;
+  box-shadow: 0 4px 10px rgba(241, 173, 82, 0.12);
+}
+
+/* ===== Footer con navegación inferior ===== */
+.app-footer {
+  border-top: 1px solid var(--ion-color-step-200, #e5e7eb);
+
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.35rem 0;
+  }
+
+  .nav-item {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--ion-color-medium, #6b7280);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+
+    ion-icon {
+      font-size: 24px;
+    }
+
+    &.active {
+      color: #ec9513;
+    }
+  }
+}
+
+/* ===== Fondo global de la página ===== */
+:host {
+  --ion-background-color: #f3d19f;
+  --ion-text-color: #3b2e1b;
+}
+
+ion-content {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Tamaño máximo del recuadro de la foto */
+.photo-frame {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+}

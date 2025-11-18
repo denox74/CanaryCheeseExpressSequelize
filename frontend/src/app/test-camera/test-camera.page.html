@@ -1,0 +1,91 @@
+<ion-header [translucent]="true" class="cheese-header">
+  <ion-toolbar>
+    <ion-title>Detalle Queso Canario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="page-cheeses">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Detalle queso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="6">
+        <ion-img
+          class="photo-frame"
+          *ngIf="capturedPhoto"
+          [src]="capturedPhoto"
+          (click)="takePhoto()">
+        </ion-img>
+
+        <ion-img
+          class="photo-frame"
+          *ngIf="!capturedPhoto"
+          src="../../assets/No-Image-Placeholder.svg"
+          (click)="takePhoto()">
+        </ion-img>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="photo-actions">
+          <ion-button class="submit-btn" (click)="takePhoto()">
+            <ion-icon slot="start" name="camera-outline"></ion-icon>
+            Hacer foto
+          </ion-button>
+
+          <ion-button class="submit-btn" (click)="pickImage()">
+            <ion-icon slot="start" name="image-outline"></ion-icon>
+            Elegir imagen
+          </ion-button>
+
+          <ion-button class="cancel-btn" (click)="discardImage()">
+            <ion-icon slot="start" name="aperture"></ion-icon>
+            Quitar imagen
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form class="cheese-form">
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Curación</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Peso</ion-label>
+    <ion-input type="number" step="0.1" inputmode="decimal"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Origen</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-button class="submit-btn" expand="block" type="button">
+    Crear
+  </ion-button>
+</form>
+</ion-content>
+
+
+
+<ion-footer class="app-footer">
+  <ion-toolbar>
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item" (click)="gotoHome()">
+        <ion-icon name="home"></ion-icon>
+        <span>Principal</span>
+      </button>
+    </nav>
+  </ion-toolbar>
+</ion-footer>

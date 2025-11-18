@@ -26,5 +26,8 @@ gotoHome(){
   gotoLogin(){
     this.router.navigateByUrl("/login");
   }
+  gotoCamera(){
+    this.router.navigateByUrl("/test-camera");
+  }
 
 }
